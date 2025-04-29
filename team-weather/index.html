@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>天氣預報</title>
   <link rel="stylesheet" href="./css/cloth.css">
 </head>
+
 <body>
   <div class="container">
     <!-- 頁面頭部 -->
@@ -57,14 +59,14 @@
     </div>
 
     <!-- 天氣內容區域 -->
-     <div id="weather-section">
+    <div id="weather-section">
       <div id="weather-content">
         <!-- 當天每小時天氣滾動區域 -->
         <div class="section-title">今日每小時預報</div>
         <div id="hourly-scroll" class="scroll-container">
           <div id="hourly-forecast-list" class="forecast-list"></div>
         </div>
-  
+
         <!-- 小時預報 Template -->
         <template id="hourly-item-template">
           <div class="forecast-item">
@@ -73,20 +75,20 @@
             <div class="forecast-temp">3°C</div>
           </div>
         </template>
-  
+
         <!-- 小時滾動導航 -->
         <div class="scroll-navigation">
           <div class="scroll-dot active"></div>
           <div class="scroll-dot"></div>
           <div class="scroll-dot"></div>
         </div>
-  
+
         <!-- 一周預報滾動區域 -->
         <div class="section-title">未來一周預報</div>
         <div id="weekly-scroll" class="scroll-container">
           <div id="weekly-forecast-list" class="forecast-list"></div>
         </div>
-  
+
         <!-- 一周預報 Template -->
         <template id="weekly-item-template">
           <div class="forecast-item">
@@ -95,7 +97,7 @@
             <div class="forecast-temp">2°C/5°C</div>
           </div>
         </template>
-  
+
         <!-- 週預報滾動導航 -->
         <div class="scroll-navigation">
           <div class="scroll-dot active"></div>
@@ -103,8 +105,8 @@
           <div class="scroll-dot"></div>
         </div>
       </div>
-     </div>
-    
+    </div>
+
 
     <!-- 雨量預報內容區域 -->
     <div id="rainfall-section">
@@ -114,7 +116,7 @@
         <div id="hourly-rainfall-scroll" class="scroll-container">
           <div id="hourly-rainfall-list" class="forecast-list"></div>
         </div>
-  
+
         <!-- 每小時雨量 Template -->
         <template id="hourly-rainfall-item-template">
           <div class="forecast-item">
@@ -124,20 +126,20 @@
             <div class="rainfall-probability">40%</div>
           </div>
         </template>
-  
+
         <!-- 小時雨量滾動導航 -->
         <div class="scroll-navigation">
           <div class="scroll-dot active"></div>
           <div class="scroll-dot"></div>
           <div class="scroll-dot"></div>
         </div>
-  
+
         <!-- 一周雨量預報滾動區域 -->
         <div class="section-title">未來一周雨量預報</div>
         <div id="weekly-rainfall-scroll" class="scroll-container">
           <div id="weekly-rainfall-list" class="forecast-list"></div>
         </div>
-  
+
         <!-- 一周雨量 Template -->
         <template id="weekly-rainfall-item-template">
           <div class="forecast-item">
@@ -147,7 +149,7 @@
             <div class="rainfall-probability">40%</div>
           </div>
         </template>
-  
+
         <!-- 週雨量滾動導航 -->
         <div class="scroll-navigation">
           <div class="scroll-dot active"></div>
@@ -158,4 +160,6 @@
     </div>
   </div>
 </body>
+<script src="js/weather.js"></script>
+
 </html>
