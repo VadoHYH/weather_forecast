@@ -1,0 +1,309 @@
+/* 基本樣式重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 頁面頭部 */
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.city-name {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.city-name::after {
+  margin-left: 8px;
+  font-size: 16px;
+}
+
+.temperature-range {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* 城市選擇模態框 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal.is-open {
+  display: flex;
+  justify-content: center; /* 水平置中 */
+  align-items: flex-start; /* 垂直方向從上對齊 */
+  padding-top: 80px; /* 留 80px 空間 */
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  
+  /* 加入一些額外優化 */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: modalFadeIn 0.3s ease;
+}
+
+#city-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.city-list {
+  max-height: 200px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.city-list button {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  text-align: left;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.city-list button:hover {
+  background-color: #f0f0f0;
+}
+
+#close-modal {
+  width: 100%;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* 當前天氣圖示 */
+.current-weather {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.current-weather img {
+  width: 300px;
+  height: 300px;
+}
+
+/* 天氣建議 */
+.weather-advice {
+  background-color: #f0f0f0;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* 天氣/雨量摘要容器 */
+.weather-rain-container {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.weather-info, .rainfall-info {
+  flex: 1;
+  padding: 10px;
+}
+
+.section-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.weather-data, .rainfall-data {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* 分頁選擇器 */
+.tab-container {
+  display: flex;
+  border-radius: 25px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+}
+
+.tab {
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  background-color: #fff;
+  transition: background-color 0.3s;
+}
+
+.tab-active {
+  background-color: #000;
+  color: #fff;
+}
+
+/* 滾動容器 */
+.scroll-container {
+  overflow-x: auto;
+  white-space: nowrap;
+  margin-bottom: 10px;
+  padding: 10px 0;
+  scrollbar-width: thin; /* Firefox */
+}
+
+.forecast-list {
+  display: inline-flex;
+  gap: 20px;
+}
+
+.forecast-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+}
+
+.forecast-time, .forecast-day {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.forecast-icon {
+  width: 30px;
+  height: 30px;
+  margin: 5px 0;
+}
+
+.forecast-temp, .rainfall-value, .rainfall-probability {
+  font-size: 14px;
+}
+
+/* 滾動導航 */
+.scroll-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+.scroll-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ddd;
+}
+
+.scroll-dot.active {
+  background-color: #333;
+}
+
+/* 天氣圖標 */
+.weather-icon {
+  font-size: 24px;
+  margin: 5px 0;
+}
+
+/* 雨量圖標 */
+.rainfall-icon {
+  font-size: 20px;
+  color: #4a90e2;
+}
+
+/* 為頁面添加間距 */
+.section-title {
+  margin-top: 20px;
+}
+
+/* 天氣和雨量區域 */
+#weather-section, #rainfall-section {
+  margin-top: 10px;
+}
+
+/* 天氣圖標樣式 */
+.forecast-icon {
+  filter: grayscale(0.3);
+}
+
+/* 今日/明日切換 */
+.day-toggle {
+  display: flex;
+  background-color: #f0f0f0;
+  border-radius: 25px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.day-toggle-option {
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.day-toggle-active {
+  background-color: #000;
+  color: #fff;
+}
+
+/* 調整每小時預報樣式 */
+.forecast-item {
+  padding: 5px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+#hourly-rainfall-item-template{
+  display: flex;
+	justify-content: space-between;
+}
+
+#hourly-rainfall-scroll{
+  margin: 0;
+  padding: 0;
+}
+
+.forecast-item:hover {
+  background-color: #f0f0f0;
+}
+
+
+
