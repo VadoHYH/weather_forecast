@@ -17,3 +17,14 @@ export function renderAccRainfall(locationKey, accTimeMap) {
 		container.insertAdjacentHTML("beforeend", accRainfallHTML);
 	}
 }
+
+export function renderNoDataText() {
+
+	let container = document.querySelector("#hourly-rainfall-item-template");
+	container.innerHTML = "";
+
+	let NoDataTextHTML = `
+			<p style="margin: 0 auto">無此資料</p>
+	`;
+	container.insertAdjacentHTML("beforeend", NoDataTextHTML);
+}
