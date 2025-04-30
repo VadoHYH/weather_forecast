@@ -29,7 +29,9 @@
     </div>
 
     <!-- 當前天氣圖示 -->
-    <div id="current-weather-icon" class="current-weather"></div>
+    <div id="current-weather-img" class="current-weather">
+      <img id="outfit-image" alt="Outfit Suggestion" />
+    </div>
 
     <!-- 天氣建議 -->
     <div id="weather-advice-text" class="weather-advice"></div>
@@ -40,15 +42,15 @@
         <div class="section-title">天氣狀況</div>
         <div id="weather-data-summary" class="weather-data">
           <div id="weather-condition" class="weather-details">多雲伴有雨</div>
-          <div id="feels-like" class="weather-feeling">體感溫度: -3°C</div>
+          <div id="feels-like" class="weather-feeling">體感溫度: </div>
         </div>
       </div>
 
       <div id="rainfall-info" class="rainfall-info">
         <div class="section-title">降雨資訊</div>
         <div id="rainfall-data-summary" class="rainfall-data">
-          <div id="total-rainfall" class="rainfall-total">總雨量: 5.2 mm</div>
-          <div id="rainfall-chance" class="rainfall-probability">降雨機率: 80%</div>
+          <div id="total-rainfall" class="rainfall-total">總雨量: </div>
+          <div id="rainfall-chance" class="rainfall-probability">降雨機率: </div>
         </div>
       </div>
     </div>
@@ -157,6 +159,3 @@
   <script type="module" src="js/raining.js"></script>
 </body>
 <script src="js/weather.js"></script>
-
-
-</html>
