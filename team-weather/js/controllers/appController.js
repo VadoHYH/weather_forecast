@@ -1,4 +1,5 @@
 // controllers/WeatherController.js
+import { loadAccRainfull } from "./rainingController.js";
 
 class WeatherController {
     constructor(model, view) {
@@ -22,6 +23,9 @@ class WeatherController {
       
       // 設置初始標籤頁
       this.view.setActiveTab(this.model.selectedTab);
+
+      // 初始化累積雨量圖
+      loadAccRainfull(this.model.getFullLocationName());
     }
   
     // 註冊所有事件監聽器
@@ -30,6 +34,7 @@ class WeatherController {
       this.view.bindCityNameClick(() => {
         this.view.showCityModal();
         this.renderCityList();
+        loadAccRainfull(this.model.getFullLocationName());
       });
   
       // 關閉模態視窗按鈕點擊

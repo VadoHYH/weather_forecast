@@ -3,24 +3,31 @@ import { getWeatherIconByWeather, getWeatherIconByWeek, getWeekDay } from "../mo
 export function rendeHourForecastWeather(temperList, weather) {
     const hourlyTemplate = document.querySelector("#hourly-item-template");
     const hourlyForecast = document.querySelector("#hourly-forecast-list");
-    const currentTime = String(new Date().getHours());
-    for (let i in temperList) {
-        let time = temperList[i]["DataTime"].slice(11, 16);
-        if (parseInt(time.slice(0, 2)) > parseInt(currentTime)) {
-            let temperature = temperList[i]["ElementValue"][0]["Temperature"];
-            const datePart = temperList[i]["DataTime"].slice(0, 10);
-            const today = new Date().toISOString().slice(0, 10);
-            if (datePart === today) {
-                const clone = hourlyTemplate.content.cloneNode(true);
-                clone.querySelector(".forecast-time").textContent = time;
-                clone.querySelector(".forecast-temp").textContent = temperature + "°C";
-                clone.querySelector(".forecast-icon").src = getWeatherIconByWeather(weather, currentTime);
-                hourlyForecast.appendChild(clone);
-            }
+    hourlyForecast.textContent = ""
+    const now = new Date();
+    const nowTimestamp = now.getTime();
+    const next24hTimestamp = nowTimestamp + 24 * 60 * 60 * 1000;
+
+    for (let i = 0; i < temperList.length; i++) {
+        const dateTimeStr = temperList[i]["DataTime"];
+        const dataTime = new Date(dateTimeStr);
+        const dataTimestamp = dataTime.getTime();
+
+
+        if (dataTimestamp >= nowTimestamp && dataTimestamp <= next24hTimestamp) {
+            const time = dateTimeStr.slice(11, 16);
+            const temperature = temperList[i]["ElementValue"][0]["Temperature"];
+            const clone = hourlyTemplate.content.cloneNode(true);
+            clone.querySelector(".forecast-time").textContent = time;
+            clone.querySelector(".forecast-temp").textContent = temperature + "°C";
+            clone.querySelector(".forecast-icon").src = getWeatherIconByWeather(weather, time);
+            hourlyForecast.appendChild(clone);
         }
     }
 
 }
+
+
 
 
 export function renderNowWeather(data) {
@@ -39,6 +46,7 @@ export function renderNowWeather(data) {
 export function renderWeeklyWeather(data) {
     const weeklyTemplate = document.querySelector("#weekly-item-template");
     const weeklyForecast = document.querySelector("#weekly-forecast-list");
+    weeklyForecast.textContent = ""
     for (let i in data[1]["Time"]) {
         if (i !== "0") {
             let weatherCode = data[12]["Time"][i]["ElementValue"][0]["WeatherCode"];
@@ -59,6 +67,7 @@ export function renderWeeklyWeather(data) {
 export function renderWeeklyRainfall(data) {
     const weeklyRainFallTemplate = document.querySelector("#weekly-rainfall-item-template");
     const weeklyRainfall = document.querySelector("#weekly-rainfall-list");
+    weeklyRainfall.textContent = ""
     for (let i in data[11]["Time"]) {
         if (i !== "0") {
             let rainProbability = data[11]["Time"][0]["ElementValue"][0]["ProbabilityOfPrecipitation"]
