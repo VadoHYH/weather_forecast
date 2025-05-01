@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>天氣預報</title>
+  <link rel="stylesheet" href="./css/app.css">
+</head>
+
+<body>
+  <div class="container">
+    <!-- 頁面頭部 -->
+    <div class="header">
+      <div id="city-name" class="city-name"></div>
+      <div id="temperature-range" class="temperature-range"></div>
+    </div>
+
+    <!-- 城市選擇彈窗 -->
+    <div id="city-modal" class="modal">
+      <div class="modal-content">
+        <input type="text" id="city-input" placeholder="輸入城市名...">
+        <div id="city-list" class="city-list">
+          <!-- 動態產生城市按鈕 -->
+        </div>
+        <button id="close-modal">關閉</button>
+      </div>
+    </div>
+
+    <!-- 當前天氣圖示 -->
+    <div id="current-weather-img" class="current-weather">
+      <img id="outfit-image" alt="Outfit Suggestion" />
+    </div>
+
+    <!-- 天氣建議 -->
+    <div id="weather-advice-text" class="weather-advice"></div>
+
+    <!-- 天氣/雨量切換區域 -->
+    <div id="weather-rain-summary" class="weather-rain-container">
+      <div id="weather-info" class="weather-info">
+        <div class="section-title">天氣狀況</div>
+        <div id="weather-data-summary" class="weather-data">
+          <div id="weather-condition" class="weather-details">多雲伴有雨</div>
+          <div id="feels-like" class="weather-feeling">體感溫度: </div>
+        </div>
+      </div>
+
+      <div id="rainfall-info" class="rainfall-info">
+        <div class="section-title">降雨機率</div>
+        <div id="rainfall-data-summary" class="rainfall-data">
+          <div id="total-rainfall" class="rainfall-total"> </div>
+          <div id="rainfall-chance" class="rainfall-probability"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 分頁選擇器 -->
+    <div class="tab-container">
+      <div id="weather-tab" class="tab tab-active">天氣</div>
+      <div id="rainfall-tab" class="tab">雨量</div>
+    </div>
+
+    <!-- 天氣內容區域 -->
+    <div id="weather-section">
+      <div id="weather-content">
+        <!-- 當天每小時天氣滾動區域 -->
+        <div class="section-title">今日每小時預報</div>
+        <div id="hourly-scroll" class="scroll-container">
+          <div id="hourly-forecast-list" class="forecast-list"></div>
+        </div>
+
+        <!-- 小時預報 Template -->
+        <template id="hourly-item-template">
+          <div class="forecast-item">
+            <div class="forecast-time">00:00</div>
+            <img src="" alt="weather icon" class="forecast-icon">
+            <div class="forecast-temp">3°C</div>
+          </div>
+        </template>
+
+        <!-- 一周預報滾動區域 -->
+        <div class="section-title">未來一周預報</div>
+        <div id="weekly-scroll" class="scroll-container">
+          <div id="weekly-forecast-list" class="forecast-list"></div>
+        </div>
+
+        <!-- 一周預報 Template -->
+        <template id="weekly-item-template">
+          <div class="forecast-item">
+            <div class="forecast-day">週一</div>
+            <img src="" alt="weather icon" class="forecast-icon">
+            <div class="forecast-temp">2°C/5°C</div>
+          </div>
+        </template>
+
+      </div>
+    </div>
+
+
+    <!-- 雨量預報內容區域 -->
+    <div id="rainfall-section" style="display: none;">
+      <div id="rainfall-content">
+        <!-- 當天每小時雨量滾動區域 -->
+        <div class="section-title">累積雨量(毫米)</div>
+        <div id="hourly-rainfall-scroll" class="scroll-container">
+          <div id="hourly-rainfall-list" class="forecast-list"></div>
+        </div>
+
+        <!-- 每小時雨量 Template -->
+        <div id="hourly-rainfall-item-template">
+          <div class="forecast-item">
+            <div class="forecast-time"></div>
+            <img src="" alt="rainfall icon" class="forecast-icon">
+            <div class="rainfall-value">0.5</div>
+            <div class="rainfall-probability">40%</div>
+          </div>
+        </div>
+
+        <!-- 一周雨量預報滾動區域 -->
+        <div class="section-title">未來一週降雨機率</div>
+        <div id="weekly-rainfall-scroll" class="scroll-container">
+          <div id="weekly-rainfall-list" class="forecast-list"></div>
+        </div>
+
+        <!-- 一周雨量 Template -->
+        <template id="weekly-rainfall-item-template">
+          <div class="forecast-item">
+            <div class="forecast-day">週一</div>
+            <img src="" alt="rainfall icon" class="forecast-icon">
+            <div class="rainfall-value"></div>
+            <div class="rainfall-probability">40%</div>
+          </div>
+        </template>
+
+      </div>
+    </div>
+  </div>
+  <script type="module" src="js/app.js"></script>
+  <script type="module" src="js/raining.js"></script>
+  <script type="module" src="js/weather.js"></script>
+</body>
+
+</html>
