@@ -25,7 +25,7 @@ export function getWeatherIconByWeather(weather, currentTime) {
     if (["15", "16", "17", "18", "21", "22", "32", "33", "34", "36"].includes(weatherCode)) return "img/thunderstorm.svg";
     if (["42"].includes(weatherCode)) return "img/snow.svg";
     if (["26", "27", "28"].includes(weatherCode)) return "img/foggy.svg";
-    return "img/smile.png";
+    return "img/smile.svg";
 
 
 }
@@ -53,7 +53,7 @@ export function getWeatherIconByWeek(weatherCode) {
     if (["15", "16", "17", "18", "21", "22", "32", "33", "34", "36"].includes(weatherCode)) return "img/thunderstorm.svg";
     if (["42"].includes(weatherCode)) return "img/snow.svg";
     if (["26", "27", "28"].includes(weatherCode)) return "img/foggy.svg";
-    return "img/smile.png";
+    return "img/smile.svg";
 
 }
 
